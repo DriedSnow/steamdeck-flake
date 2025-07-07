@@ -99,6 +99,8 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
+    historyFileSize = "15000";
+    historyFile = "~/.cache/bash/history";
     shellAliases = {
       rm = "trash";
       v = "nvim";
@@ -107,8 +109,6 @@
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
-    historyFileSize = "15000";
-    historyFile = "~/.cache/bash/history";
   };
   programs.zoxide = {
     enable = true;
