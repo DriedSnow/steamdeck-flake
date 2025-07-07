@@ -99,7 +99,7 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    historyFileSize = "15000";
+    historyFileSize = 15000;
     historyFile = "~/.cache/bash/history";
     shellAliases = {
       rm = "trash";
