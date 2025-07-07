@@ -32,6 +32,12 @@
       trash-cli
       vlc
       yt-dlp
+      bat
+      xarchiver
+      lrzip
+      gnutar
+      github-cli
+      git
       ani-cli;
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -92,6 +98,24 @@
   #
   programs.bash = {
     enable = true;
+    enableCompletion = true;
+    shellAliases = {
+      rm = "trash";
+      v = "nvim";
+    };
+  };
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+    historyFileSize = "15000";
+    historyFile = "~/.cache/bash/history";
+  };
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
   };
   home.sessionVariables = {
     EDITOR = "nvim";
