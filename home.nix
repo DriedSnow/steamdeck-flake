@@ -26,6 +26,7 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       qsp-tools
+      update-sys
       onboard
       tldr
       trash-cli
@@ -48,6 +49,14 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+  };
+
+  xdg.desktopEntries = {
+    update-sys = {
+      name = "Update sys";
+      exec = "update-sys";
+      terminal = false;
+    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
