@@ -100,7 +100,7 @@
     enable = true;
     enableCompletion = true;
     historyFileSize = 15000;
-    historyFile = "~/.cache/bash/history";
+    historyFile = "/home/deck/.cache/bash/history";
     shellAliases = {
       rm = "trash";
       v = "nvim";
