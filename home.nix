@@ -148,6 +148,8 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       builders = "ssh://build x86_64-linux /home/deck/.ssh/id_ed25519_build 16 2 nixos-test,big-parallel,kvm";
+      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "192.168.1.241:LYU/TA89d1XJeWTbmt1lgNGbQGDT16RedHcboj9fjDw=" ];
+      substituters = "http://192.168.1.241?priority=1 https://cache.nixos.org?priority=2";
     };
   };
 
