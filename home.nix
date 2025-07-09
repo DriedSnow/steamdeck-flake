@@ -149,6 +149,7 @@
         source "${pkgs.nix}/etc/profile.d/nix.sh"
         source "/home/deck/.nix-profile/etc/profile.d/hm-session-vars.sh"
         cd ~/.config/home-manager
+        git reset --hard;git pull
         nix flake update
         home-manager switch
       ''}";
