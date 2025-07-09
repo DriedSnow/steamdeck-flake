@@ -21,9 +21,9 @@
         '';
       })
       (final: prev: {
-        # qsp-tools = inputs.qsp-flake.packages."${pkgs.system}".default;
-        Qqsp = inputs.qsp-tools.packages."${pkgs.system}".Qqsp;
-        qgen = inputs.qsp-tools.packages."${pkgs.system}".qgen;
+        qsp-tools = inputs.qsp-flake.packages."${pkgs.system}".default;
+        # Qqsp = inputs.qsp-tools.packages."${pkgs.system}".Qqsp;
+        # qgen = inputs.qsp-tools.packages."${pkgs.system}".qgen;
       })
     ];
   };

@@ -25,8 +25,7 @@
   # added the builtins.attrValues and inherit as it is better then with and i dont want to type pkgs. all the time
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      Qqsp
-      qgen
+      qsp-tools
       ruffle
       update-sys
       onboard
