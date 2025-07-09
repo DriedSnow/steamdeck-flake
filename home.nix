@@ -152,7 +152,7 @@
     };
   };
   systemd.user.timers = {
-    autoUpgrade = {
+    autoUpdate = {
       Unit = {
         Description = "autoUpgrade timer";
         PartOf = "autoUpgrade.service";
