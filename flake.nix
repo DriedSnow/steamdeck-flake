@@ -19,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, qsp-flake, nix4nvchad, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, qsp-flake, nix4nvchad, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
