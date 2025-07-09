@@ -25,20 +25,23 @@
   # added the builtins.attrValues and inherit as it is better then with and i dont want to type pkgs. all the time
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      qsp-tools
+      Qqsp
+      qgen
+      ruffle
       update-sys
       onboard
       tldr
       trash-cli
       vlc
+      mpv
       yt-dlp
-      bat
       xarchiver
       lrzip
       gnutar
       github-cli
       wget
       git
+      heroic
       ani-cli;
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -167,14 +170,12 @@
       };
     };
   };
-  # services.home-manager.autoUpgrade = {
-  #   enable = true;
-  #   frequency = "daily";
-  # };
   nix = {
-    gc.automatic = true;
-    gc.frequency = "weekly";
-    gc.persistent = true;
+    gc = {
+      automatic = true;
+      frequency = "weekly";
+      persistent = true;
+    };
     package = pkgs.nix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];

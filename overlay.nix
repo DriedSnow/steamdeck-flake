@@ -12,14 +12,18 @@
           home-manager switch -b backup
           # flatpak is installed by default so added just in case
           if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ];then
-            pkexec --user deck flatpak update
+            echo "Flatpak update is not allowed over ssh as it needs root when over ssh"
           else
             flatpak update
           fi
+          # this is because i think it does not update nix. home-manager updates its self.
+          nix profile upgrade nix
         '';
       })
       (final: prev: {
-        qsp-tools = inputs.qsp-flake.packages."${pkgs.system}".default;
+        # qsp-tools = inputs.qsp-flake.packages."${pkgs.system}".default;
+        Qqsp = inputs.qsp-tools.packages."${pkgs.system}".Qqsp;
+        qgen = inputs.qsp-tools.packages."${pkgs.system}".qgen;
       })
     ];
   };
