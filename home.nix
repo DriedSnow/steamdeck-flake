@@ -155,7 +155,7 @@
     autoUpgrade = {
       Unit = {
         Description = "autoUpgrade timer";
-        PartOf = "autoUpgrade.service"
+        PartOf = "autoUpgrade.service";
       };
       Timer = {
         OnCalendar = "daily";
