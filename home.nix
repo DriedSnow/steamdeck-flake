@@ -37,6 +37,7 @@
       lrzip
       gnutar
       github-cli
+      wget
       git
       ani-cli;
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -136,10 +137,36 @@
     hm-activation = true;
     backup = true;
   };
-  services.home-manager.autoUpgrade = {
-    enable = true;
-    frequency = "daily";
+  systemd.user.services.autoUpdate = {
+    Unit = {
+      Description = "Auto update home-manager setup";
+    };
+    install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.writeShellScript "autoUpgrade" ''
+        #!/bin/sh
+        home-manager switch --recreate-lock-file --flake ${inputs.self.outPath}
+      ''}";
+    };
   };
+  systemd.user.timers = {
+    autoUpgrade = {
+      Unit = {
+        Description = "autoUpgrade timer";
+        PartOf = "autoUpgrade.service"
+      };
+      Timer = {
+        OnCalendar = "daily";
+        Persistent = true;
+      };
+    };
+  };
+  # services.home-manager.autoUpgrade = {
+  #   enable = true;
+  #   frequency = "daily";
+  # };
   nix = {
     gc.automatic = true;
     gc.frequency = "weekly";
