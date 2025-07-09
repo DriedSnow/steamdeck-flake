@@ -40,7 +40,6 @@
       github-cli
       wget
       git
-      heroic
       ani-cli;
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
