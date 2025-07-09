@@ -141,7 +141,7 @@
     Unit = {
       Description = "Auto update home-manager setup";
     };
-    install = {
+    Install = {
       WantedBy = [ "default.target" ];
     };
     Service = {
