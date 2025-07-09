@@ -146,8 +146,7 @@
     };
     Service = {
       ExecStart = "${pkgs.writeShellScript "autoUpgrade" ''
-        #!/bin/sh
-        home-manager switch --recreate-lock-file --flake ${inputs.self.outPath}
+        home-manager switch --recreate-lock-file
       ''}";
     };
   };
