@@ -40,11 +40,16 @@
       github-cli
       wget
       git
+      heroic
+      bottles
+      # nixGLIntel: Mesa OpenGL implementation (intel, amd, nouveau, ...).
+      # nixVulkanIntel: Mesa Vulkan implementation.
+      # auto.nixGLDefault: Tries to auto-detect and install Nvidia, if not, fallback to mesa. Recommended. Invoke with nixGL program.
+      # usage of nixgl "nixGL program args" "nixGLIntel program args" "nixVulkanIntel program args"
+      # nixgl.auto.nixGLDefault
+      nixgl.nixGLIntel
+      nixgl.nixVulkanIntel
       ani-cli;
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of

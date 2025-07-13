@@ -17,15 +17,20 @@
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, qsp-flake, nix4nvchad, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, qsp-flake, nix4nvchad, nixgl, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = import nixpkgs { 
         inherit system;
         config.allowUnfree = true;
+        overlays = [ nixgl.overlay ];
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
