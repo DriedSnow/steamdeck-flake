@@ -47,8 +47,8 @@
       # auto.nixGLDefault: Tries to auto-detect and install Nvidia, if not, fallback to mesa. Recommended. Invoke with nixGL program.
       # usage of nixgl "nixGL program args" "nixGLIntel program args" "nixVulkanIntel program args"
       # nixgl.auto.nixGLDefault
-      pkgs.nixgl.nixGLIntel
-      pkgs.nixgl.nixVulkanIntel
+      nixGLIntel
+      nixVulkanIntel
       ani-cli;
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
