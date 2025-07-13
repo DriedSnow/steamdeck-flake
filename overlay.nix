@@ -22,7 +22,7 @@
       })
       (final: prev: {
         qsp-tools = inputs.qsp-flake.packages."${pkgs.system}".default;
-        nixgl = inputs.nixgl.packages."${pkgs.system}".nixGLIntel
+        nixgl = inputs.nixgl.packages."${pkgs.system}".nixGLIntel;
         # Qqsp = inputs.qsp-tools.packages."${pkgs.system}".Qqsp;
         # qgen = inputs.qsp-tools.packages."${pkgs.system}".qgen;
       })
