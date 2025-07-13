@@ -30,7 +30,6 @@
       pkgs = import nixpkgs { 
         inherit system;
         config.allowUnfree = true;
-        overlays = [ nixgl.overlay ];
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
