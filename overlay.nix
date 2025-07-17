@@ -22,10 +22,6 @@
       })
       (final: prev: {
         qsp-tools = inputs.qsp-flake.packages."${pkgs.system}".default;
-        nixgl = inputs.nixgl.packages."${pkgs.system}".nixGLIntel;
-        nixvulkan = inputs.nixgl.packages."${pkgs.system}".nixVulkanIntel;
-        # Qqsp = inputs.qsp-tools.packages."${pkgs.system}".Qqsp;
-        # qgen = inputs.qsp-tools.packages."${pkgs.system}".qgen;
       })
     ];
   };

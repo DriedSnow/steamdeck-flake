@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, inputs, ... }:
+{ config, pkgs, pkgs-unstable, inputs, nixgl, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,49 +20,35 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  # pulled from docs/manual/usage/gpu-non-nixos.md
+  nixGL.packages = inputs.nixGL.packages; # may also work with nixgl.packages
+  nixGL.defaultWrapper = "mesa";
+  nixGL.installScripts = [ "mesa" ];
+  nixGL.vulkan.enable = true; # this may work or may make problems
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # added the builtins.attrValues and inherit as it is better then with and i dont want to type pkgs. all the time
-  home.packages = builtins.attrValues {
-    inherit (pkgs)
-      qsp-tools
-      ruffle
-      update-sys
-      onboard
-      tldr
-      trash-cli
-      vlc
-      mpv
-      yt-dlp
-      xarchiver
-      lrzip
-      gnutar
-      github-cli
-      wget
-      git
-      heroic
-      bottles
-      # nixGLIntel: Mesa OpenGL implementation (intel, amd, nouveau, ...).
-      # nixVulkanIntel: Mesa Vulkan implementation.
-      # auto.nixGLDefault: Tries to auto-detect and install Nvidia, if not, fallback to mesa. Recommended. Invoke with nixGL program.
-      # usage of nixgl "nixGL program args" "nixGLIntel program args" "nixVulkanIntel program args"
-      # nixgl.auto.nixGLDefault
-      nixgl
-      nixvulkan
-      ani-cli;
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  };
+  home.packages = [
+   pkgs.qsp-tools
+   pkgs.ruffle
+   pkgs.update-sys
+   pkgs.onboard
+   pkgs.tldr
+   pkgs.trash-cli
+   pkgs.vlc
+   pkgs.mpv
+   pkgs.yt-dlp
+   pkgs.xarchiver
+   pkgs.lrzip
+   pkgs.gnutar
+   pkgs.github-cli
+   pkgs.wget
+   pkgs.git
+   pkgs.ani-cli
+   (config.lib.nixGL.wrap pkgs.heroic)
+   (config.lib.nixGL.wrap pkgs.bottles)
+  ];
 
   xdg.desktopEntries = {
     update-sys = {
