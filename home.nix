@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, inputs, nixgl, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,18 +20,11 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  # pulled from docs/manual/usage/gpu-non-nixos.md
-  nixGL.packages = inputs.nixGL.packages; # may also work with nixgl.packages
-  nixGL.defaultWrapper = "mesa";
-  nixGL.installScripts = [ "mesa" ];
-  nixGL.vulkan.enable = true; # this may work or may make problems
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # added the builtins.attrValues and inherit as it is better then with and i dont want to type pkgs. all the time
   home.packages = [
    pkgs.qsp-tools
-   pkgs.ruffle
    pkgs.update-sys
    pkgs.onboard
    pkgs.tldr
@@ -46,8 +39,6 @@
    pkgs.wget
    pkgs.git
    pkgs.ani-cli
-   (config.lib.nixGL.wrap pkgs.heroic)
-   (config.lib.nixGL.wrap pkgs.bottles)
   ];
 
   xdg.desktopEntries = {

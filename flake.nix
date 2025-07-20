@@ -17,13 +17,9 @@
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, qsp-flake, nix4nvchad, nixgl, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, qsp-flake, nix4nvchad, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
